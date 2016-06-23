@@ -46,7 +46,8 @@ function showList() {
             +'<button type="button" onclick="viewRow(' +i +')" class="btn btn-default">Vizualizare</button></td>'
             +'<td><button type="button" onclick="deleteRow(' +i +')" class="btn btn-default">Stergere</button> </td></tr>';
     }
-    myTable += '</table>';
+    myTable += '<tr class="info"><td>' +mostFrequentName() +'</td><td>' +uniqueNames()
+        + '</td><td>'+'</td><td>' +averageSalary() +'</td></tr></table>';
 
     var container = document.getElementById('listcontainer');
     container.innerHTML = myTable;
@@ -80,14 +81,12 @@ function addEmployee() {
 }
 
 function deleteLast() {
-
     employeeList.pop();
     showList();
     showSalary();
 }
 
 function viewRow(index) {
-
     alert("First Name: " +employeeList[index].firstName +"\n"
         + "Last Name: " +employeeList[index].lastName +"\n"
         + "Phone: " +employeeList[index].phone +"\n"
@@ -95,8 +94,106 @@ function viewRow(index) {
 }
 
 function deleteRow(index) {
-
     employeeList.splice(index, 1);
     showList();
     showSalary();
+}
+
+function mostFrequentName() {
+    var array = {};
+    var maxCount = 0;
+    var maxName;
+
+    for (var i in employeeList) {
+
+        array[employeeList[i].firstName] = (array[employeeList[i].firstName] || 0) + 1;
+        if (array[employeeList[i].firstName] > maxCount) {
+            maxCount = array[employeeList[i].firstName];
+            maxName = employeeList[i].firstName;
+        }
+    }
+    return maxName;
+}
+
+function uniqueNames() {
+    var array = {};
+    var count = 0;
+
+    for (var i in employeeList) {
+
+        if (array[employeeList[i].lastName] == undefined) {
+            array[employeeList[i].lastName] = 0;
+            count++;
+        }
+    }
+    return count;
+}
+
+function averageSalary() {
+    var sum = 0;
+
+    for (var i in employeeList) {
+        sum += employeeList[i].salary;
+    }
+    return sum / employeeList.length;
+}
+
+function compare1(x, y) {
+    if (x.firstName < y.firstName)
+        return -1;
+    if (x.firstName > y.firstName)
+        return 1;
+    return 0;
+}
+
+function compare2(x, y) {
+    if (x.lastName < y.lastName)
+        return -1;
+    if (x.lastName > y.lastName)
+        return 1;
+    return 0;
+}
+
+function compare3(x, y) {
+    if (x.phone < y.phone)
+        return -1;
+    if (x.phone > y.phone)
+        return 1;
+    return 0;
+}
+
+function compare4(x, y) {
+    if (x.salary < y.salary)
+        return -1;
+    if (x.salary > y.salary)
+        return 1;
+    return 0;
+}
+
+function sortBy() {
+    var selectValue = document.getElementById("sortselect").value;
+
+    switch(selectValue) {
+        case "1": employeeList.sort(compare1);
+                break;
+        case "2": employeeList.sort(compare2);
+                break;
+        case "3": employeeList.sort(compare3);
+            break;
+        case "4": employeeList.sort(compare4);
+            break;
+    }
+    showList();
+}
+
+function filterTable() {
+    var copyList = employeeList;
+    var filterValue = document.getElementById("filtervalue").value;
+
+    employeeList = employeeList.filter(function(elem) {
+        return elem.firstName  == filterValue || elem.lastName == filterValue ||
+            elem.phone == filterValue || elem.salary == filterValue;
+    });
+    showList();
+    employeeList = copyList;
 }

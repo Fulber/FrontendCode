@@ -23,11 +23,26 @@
         <div id="listcontainer">
 
         </div>
-        <form class="form-inline">
+        <p>
             <button type="button" onclick="showSalary()" class="btn btn-default">Salary total</button>
-            <div id="salarytotal" class="form-group">
+            <span id="salarytotal">
 
-            </div>
+            </span>
+        </p>
+        <p>
+            <form class="form-inline">
+                <button type="button" onclick="sortBy()" class="btn btn-default">Sort by</button>
+                <select id="sortselect" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </form>
+        </p>
+        <form class="form-inline">
+            <button type="button" onclick="filterTable()" class="btn btn-default">Filter</button>
+            <input id="filtervalue" type="text" class="form-control">
         </form>
     </div>
 
