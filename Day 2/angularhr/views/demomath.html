@@ -13,9 +13,12 @@
         <p>Number A: <input type="number" ng-model="numberA"></p>
         <p>Number B: <input type="number" ng-model="numberB"></p>
         <p>
-            <a class="btn btn-primary btn-lg" role="button" ng-click="mathOperation()">Addition</a>
+            <a class="btn btn-primary btn-lg" role="button" ng-click="mathOperation('+')">Addition</a>
+            <a class="btn btn-primary btn-lg" role="button" ng-click="mathOperation('-')">Subtraction</a>
+            <a class="btn btn-primary btn-lg" role="button" ng-click="mathOperation('*')">Multiplication</a>
+            <a class="btn btn-primary btn-lg" role="button" ng-click="mathOperation('/')">Division</a>
         </p>
-        <p>Result: </p>
+        <p>Result: <span ng-bind="result"></span></p>
     </div>
 </div>
 <script type="text/javascript" src="../bower_components/jquery/jquery.js"></script>
