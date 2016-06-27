@@ -3,6 +3,9 @@
  */
 hrApp.controller('UserController', function ($scope, $location, UserService) {
 
+    $scope.userList = [];
+    $scope.showUserList = false;
+
     $scope.back = function () {
         $location.url('/');
     };
@@ -24,7 +27,7 @@ hrApp.controller('UserController', function ($scope, $location, UserService) {
     };
     $scope.show = function () {
 
-        var userList = UserService.getList();
-        alert(userList[0].firstName);
+        $scope.userList = UserService.getList();
+        $scope.showUserList = !$scope.showUserList;
     };
 });
