@@ -1,0 +1,20 @@
+<ng-form name="myForm" class="my-form panel-body">
+    <p>
+        UserType: <input name="input" ng-model="userType" required>
+        <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
+    </p>
+    <p>
+        UserEmail: <input name="email" type="email" ng-model="userEmail" required>
+        <span class="error" ng-show="myForm.email.$error.required">Required!</span>
+        <span class="error" ng-show="myForm.email.$error.email">Not a valid email address!</span><br>
+    </p>
+    userType = {{userType}}<br>
+    myForm.input.$valid = {{myForm.input.$valid}}<br>
+    myForm.input.$error = {{myForm.input.$error}}<br>
+    myForm.email.$valid = {{myForm.email.$valid}}<br>
+    myForm.email.$error = {{myForm.email.$error}}<br>
+    myForm.$valid = {{myForm.$valid}}<br>
+    myForm.$error.required = {{!!myForm.$error.required}}<br>
+
+    <a class="btn btn-primary btn-sm" role="button" ng-show="myForm.$valid" ng-click="submit()">Submit</a>
+</ng-form>

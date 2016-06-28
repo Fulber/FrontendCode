@@ -1,0 +1,11 @@
+<div class="panel-body">
+    <select ng-model="selColor" ng-options="color.text for color in colors" ng-change="changeColor()"></select>
+    <select ng-model="selColor" ng-options="color.text group by color.class for color in colors" ng-change="changeColor()"></select>
+    <span ng-class="colorClass">Some text</span>
+</div>
+<p>
+    <input ng-model="filColor" type="text">
+</p>
+<ul>
+    <li ng-repeat="color in colors | filter : {text : filColor}">{{color.text}}</li>
+</ul>
