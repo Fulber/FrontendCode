@@ -1,0 +1,66 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Edit Job</h2>
+    </div>
+    <div class="panel-body">
+        <ng-form name="jobEditForm">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error': jobEditForm.jobId.$invalid && jobEditForm.jobId.$dirty }">
+                        <label for="jobId">Job Id:</label>
+                        <input type="text" id="jobId" name="jobId" class="form-control" ng-model="job.jobId"
+                               placeholder="Job Id" ng-pattern="numberPattern" required>
+                        <span class="help-block" ng-show="jobEditForm.jobId.$error.required
+                             && jobEditForm.jobId.$dirty">{{requiredErrorMessage}}</span>
+                        <span class="help-block" ng-show="jobEditForm.jobId.$error.pattern
+                             && jobEditForm.jobId.$dirty">{{patternNumberNotRespectedMessage}}</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error': jobEditForm.jobTitle.$invalid && jobEditForm.jobTitle.$dirty }">
+                        <label for="jobTitle">Job Title:</label>
+                        <input type="text" id="jobTitle" name="jobTitle" class="form-control" ng-model="job.jobTitle"
+                               placeholder="Job Title" ng-pattern="namePattern" required>
+                        <span class="help-block" ng-show="jobEditForm.jobTitle.$error.required
+                             && jobEditForm.jobTitle.$dirty">{{requiredErrorMessage}}</span>
+                        <span class="help-block" ng-show="jobEditForm.jobTitle.$error.pattern
+                             && jobEditForm.jobTitle.$dirty">{{patternNameNotRespectedMessage}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error': jobEditForm.maxSalary.$invalid && jobEditForm.maxSalary.$dirty }">
+                        <label for="maxSalary">Max Salary:</label>
+                        <input type="text" id="maxSalary" name="maxSalary" class="form-control" ng-model="job.maxSalary"
+                               placeholder="Max Salary" ng-pattern="numberPattern" required>
+                        <span class="help-block" ng-show="jobEditForm.maxSalary.$error.required
+                             && jobEditForm.maxSalary.$dirty">{{requiredErrorMessage}}</span>
+                        <span class="help-block" ng-show="jobEditForm.maxSalary.$error.pattern
+                             && jobEditForm.maxSalary.$dirty">{{patternNumberNotRespectedMessage}}</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error': jobEditForm.minSalary.$invalid && jobEditForm.minSalary.$dirty }">
+                        <label for="minSalary">Min Salary:</label>
+                        <input type="text" id="minSalary" name="minSalary" class="form-control" ng-model="job.minSalary"
+                               placeholder="Min Salary" ng-pattern="numberPattern" required>
+                        <span class="help-block" ng-show="jobEditForm.minSalary.$error.required
+                             && jobEditForm.minSalary.$dirty">{{requiredErrorMessage}}</span>
+                        <span class="help-block" ng-show="jobEditForm.minSalary.$error.pattern
+                             && jobEditForm.minSalary.$dirty">{{patternNumberNotRespectedMessage}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-7">
+                    <div class="container">
+                        <a class="btn btn-primary btn-sm" role="button" ng-click="reset()">Reset</a>
+                        <a class="btn btn-primary btn-sm" role="button" ng-show="jobEditForm.$valid" ng-click="create(job)">Save</a>
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+    </div>
+</div>
